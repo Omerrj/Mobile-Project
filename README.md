@@ -7,7 +7,7 @@ A new Flutter project.
 ### The Wizards
 - Omer Sabah 
 - Taman Moayed
-- Danyar Kdhir
+- Danyar Khdhir
 - Ala Saad
 
 
