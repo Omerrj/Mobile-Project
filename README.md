@@ -1,6 +1,15 @@
-# myapp
+# Mobile Project
 
 A new Flutter project.
+
+
+## Team
+### The Wizards
+- Omer Sabah 
+- Taman Moayed
+- Danyar Kdhir
+- Ala Saad
+
 
 ## Getting Started
 
