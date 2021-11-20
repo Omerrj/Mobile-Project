@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/widgets/nav_item.dart';
 
-class BottomNavBar extends StatefulWidget {
-  int currentIndex;
-  final navigate;
-
-  BottomNavBar({Key? key, required this.currentIndex, required this.navigate})
+class BottomNavBar extends StatelessWidget {
+  const BottomNavBar(
+      {Key? key, required this.currentIndex, required this.navigate})
       : super(key: key);
 
-  @override
-  State<BottomNavBar> createState() => _BottomNavBarState();
-}
+  final int currentIndex;
+  final void Function(int) navigate;
 
-class _BottomNavBarState extends State<BottomNavBar> {
   bool isSelected(int index) {
-    return index == widget.currentIndex;
+    return index == currentIndex;
   }
 
   @override
@@ -29,59 +26,27 @@ class _BottomNavBarState extends State<BottomNavBar> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          NavItem(Icons.home, 0, "Home"),
-          NavItem(Icons.favorite, 1, "Favourites"),
-          NavItem(Icons.language, 2, "NearBy"),
-          NavItem(Icons.notifications, 3, "Notifications"),
+          NavItem(
+              icon: Icons.home,
+              label: "Home",
+              onPress: () => navigate(0),
+              isActive: isSelected(0)),
+          NavItem(
+              icon: Icons.favorite,
+              label: "Favourites",
+              onPress: () => navigate(1),
+              isActive: isSelected(1)),
+          NavItem(
+              icon: Icons.language,
+              label: "NearBy",
+              onPress: () => navigate(2),
+              isActive: isSelected(2)),
+          NavItem(
+              icon: Icons.notifications,
+              label: "Notifications",
+              onPress: () => navigate(3),
+              isActive: isSelected(3)),
         ],
-      ),
-    );
-  }
-
-  Widget NavItem(IconData icon, int tabIndex, String label) {
-    return GestureDetector(
-      onTap: () {
-        widget.navigate(tabIndex);
-      },
-      child: SizedBox(
-        width: 80,
-        height: 60,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-                left: 7,
-                top: isSelected(tabIndex) ? -25 : -10,
-
-                // Outer Circle
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor:
-                      isSelected(tabIndex) ? Colors.white : Colors.transparent,
-
-                  // Inner circle
-                  child: CircleAvatar(
-                    radius: isSelected(tabIndex) ? 25 : 10,
-                    backgroundColor: isSelected(tabIndex)
-                        ? Theme.of(context).primaryColor
-                        : Colors.transparent,
-                    child: Icon(
-                      icon,
-                      color: Colors.white,
-                    ),
-                  ),
-                )),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(
-                label,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

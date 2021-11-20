@@ -10,6 +10,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(primaryColor: const Color(0xff1b4754)),
-        home: const Navigation());
+        home: Container(
+          child: const Navigation(),
+          decoration: const BoxDecoration(color: Color(0xff1b4754)),
+        ));
   }
 }

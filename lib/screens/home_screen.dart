@@ -8,26 +8,39 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> cards = [
-      CardItem("", "هێمن کامەران هیوا", "٠٧٥٠١٢٣٤٥٦٧", "جامچی"),
-      CardItem("", "هێمن کامەران هیوا", "٠٧٥٠١٢٣٤٥٦٧", "جامچی"),
-      CardItem("", "هێمن کامەران هیوا", "٠٧٥٠١٢٣٤٥٦٧", "جامچی"),
-      CardItem("", "هێمن کامەران هیوا", "٠٧٥٠١٢٣٤٥٦٧", "جامچی"),
-      CardItem("", "هێمن کامەران هیوا", "٠٧٥٠١٢٣٤٥٦٧", "جامچی"),
+    List<CardItem> cards = [
+      const CardItem(
+          image:
+              "https://media.istockphoto.com/photos/portrait-young-confident-smart-asian-businessman-look-at-camera-and-picture-id1288538088?b=1&k=20&m=1288538088&s=170667a&w=0&h=3efMku7kSXUhpVrErAVVgxp6G91tRZ_5seygOn68RnE=",
+          job: "جامچی",
+          name: "هێمن کامەران هیوا",
+          phone: "٠٧٥٠١٢٣٤٥٦٧"),
+      const CardItem(
+          image:
+              "https://media.istockphoto.com/photos/portrait-young-confident-smart-asian-businessman-look-at-camera-and-picture-id1288538088?b=1&k=20&m=1288538088&s=170667a&w=0&h=3efMku7kSXUhpVrErAVVgxp6G91tRZ_5seygOn68RnE=",
+          job: "کارەباچی",
+          name: "سەلمان عومەر",
+          phone: "٠٧٥٠١٢٣٤٥٦٧"),
+      const CardItem(
+          image: "",
+          job: "جامچی",
+          name: "هێمن کامەران هیوا",
+          phone: "٠٧٥٠١٢٣٤٥٦٧"),
+      const CardItem(
+          image: "",
+          job: "جامچی",
+          name: "هێمن کامەران هیوا",
+          phone: "٠٧٥٠١٢٣٤٥٦٧"),
     ];
 
-    return Expanded(
-        child: SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                const TopCarousel(),
-                CardSlider(context, "Best Of Month", cards),
-                CardSlider(context, "Latest", cards),
-                CardSlider(context, "Featured", cards),
-              ],
-            )));
+    return ListView(
+      scrollDirection: Axis.vertical,
+      children: [
+        const TopCarousel(),
+        CardSlider(title: "Best Of Month", cards: cards),
+        CardSlider(title: "Latest", cards: cards),
+        CardSlider(title: "Featured", cards: cards)
+      ],
+    );
   }
 }

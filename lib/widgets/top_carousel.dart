@@ -11,7 +11,7 @@ class TopCarousel extends StatefulWidget {
 class _TopCarouselState extends State<TopCarousel> {
   int current = 0;
   static const List<String> images = [
-    "https://images.unsplash.com/photo-1528953030358-b0c7de371f1f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHdvcmtlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+    "https://media.istockphoto.com/photos/auto-mechanic-working-on-car-engine-in-mechanics-garage-repair-picture-id1284285153?b=1&k=20&m=1284285153&s=170667a&w=0&h=Qkc7YOECV0bzooIkwJX7eba7bD9MtxW0LL0xecEQ3pI=",
     "https://images.unsplash.com/photo-1558227691-41ea78d1f631?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d29ya2VyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
     "https://media.istockphoto.com/photos/work-injury-picture-id1256153526?b=1&k=20&m=1256153526&s=170667a&w=0&h=uFCs45mPt6AqL_bBUgyt1vJ0Z8NvUhPiwBhxIEiBo3o=",
     "https://media.istockphoto.com/photos/putting-in-the-dedication-to-build-her-dreams-picture-id1298550035?b=1&k=20&m=1298550035&s=170667a&w=0&h=xQmu1P5uZB3sNuqjM2CfVjLhrWhijYvy4C2v_W2wfSk="
@@ -21,22 +21,23 @@ class _TopCarouselState extends State<TopCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    final _width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
 
     return Stack(
       children: [
-        Carousel(_width),
-        Indicator(_width),
+        carousel(width),
+        indicator(width),
       ],
     );
   }
 
-  Widget Carousel(width) {
+  Widget carousel(width) {
     return CarouselSlider(
+      carouselController: _controller,
       options: CarouselOptions(
           enlargeCenterPage: false,
           enableInfiniteScroll: false,
-          height: 200,
+          height: 150,
           onPageChanged: (index, reason) {
             setState(() {
               current = index;
@@ -54,7 +55,7 @@ class _TopCarouselState extends State<TopCarousel> {
     );
   }
 
-  Widget Indicator(width) {
+  Widget indicator(width) {
     return Positioned.fill(
         child: Align(
             alignment: Alignment.bottomCenter,
